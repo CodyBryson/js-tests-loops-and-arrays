@@ -4,6 +4,8 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+  arr.push(arr.shift());
+  return arr;
 }
 
 
@@ -16,6 +18,11 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    arr.sort(function(a, b){
+        return a-b;
+    });
+    let largest = arr.pop();
+    return largest
 }
 
 
@@ -28,6 +35,8 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    const map1 = arr.map(x => x*arr.length);
+    return map1
 }
 
 
@@ -63,8 +72,18 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
+    
+    let flight = flights.find(f=>f.to.toLowerCase() == destination.toLowerCase()); return firstClass ? flight.prices.firstClass : flight.prices.standard;
+    }
+   // let flight = flights.find(f=>f.to.toLowerCase == destination.toLowerCase())
+    //if(firstclass){
+    //    return flight.prices.firstclass
+   // }else{
+   //     return flight.prices.standard
+    
+    //return firstClass ? flight.prices.firstClass: flight.prices.standard;
+    
 
-}
 
 
 // ------------------------------------------
@@ -84,7 +103,12 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
-
+  let found = staff.find(f=>f.id == id);
+  if(found){
+      return found;
+  }else{
+      return ({error:'No user with that id.'})
+  }
 }
 
 
@@ -111,4 +135,6 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+let member = theBand.members.find(f=>f.name.toLowerCase() == name.toLowerCase());
+return `${member.name} is in the band and plays the ${member.instrument}`;
 }

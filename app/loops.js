@@ -6,7 +6,13 @@
 // 1*2*3*4 = 24
 
 function factorials(num) {
-
+ var value = num;
+ if (num ===0 || num ===1) 
+ return 1;
+ while (num > 1){
+   num--;
+   value *= num;
+ } return value;
 }
 
 // ------------------------------------------
@@ -17,7 +23,11 @@ function factorials(num) {
 // output: 20
 
 function rangeTotal(n1, n2) {
-
+  var min = n1;
+  var max = n2;
+  var number = (n2 - n1 + 1);
+  var sum = number * (min + max) / 2;
+  return sum;
 }
 
 // ------------------------------------------
@@ -30,5 +40,17 @@ function rangeTotal(n1, n2) {
 // output: 2
 
 function rangeDivisor(start, end, divisor) {
-
+  const min = start;
+  const max = end;
+  const number = divisor;
+  if(min % number == 0 && max % number == 0){
+    return 2;
+  }else if(min % number == 0 && max % number !== 0){
+    return 1;
+  }else if(min % number !== 0 && max % number == 0){
+    return 1;
+  }else{
+    return 0;
+  }
+  
 }
